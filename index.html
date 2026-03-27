@@ -127,10 +127,22 @@ button:hover {
 .card:hover {
     transform: scale(1.05);
 }
+/* 🔥 Cursor Glow */
+.cursor-glow {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(0,255,255,0.3), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}    
 </style>
 </head>
 
 <body>
+<div class="cursor-glow" id="cursorGlow"></div>    
 
 <!-- 🔥 Loader -->
 <div id="loader">
@@ -177,6 +189,13 @@ button:hover {
 </div>
 
 <script>
+// 🔥 Cursor Effect
+const cursor = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
 // 🔥 Loader
 window.onload = () => {
     setTimeout(() => {
