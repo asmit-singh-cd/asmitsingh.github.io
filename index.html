@@ -40,7 +40,27 @@ body {
     display: none;
 }
 
-/* 🔥 Parallax Section */
+/* 🎬 VIDEO BACKGROUND */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+/* Sections */
 .section {
     height: 100vh;
     display: flex;
@@ -48,10 +68,7 @@ body {
     align-items: center;
     text-align: center;
     flex-direction: column;
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    position: relative;
 
     opacity: 0;
     transform: translateY(50px);
@@ -63,23 +80,14 @@ body {
     transform: translateY(0);
 }
 
-/* Different backgrounds */
-.hero {
-    background: linear-gradient(to bottom, black, #111);
-}
-
-.projects {
-    background: linear-gradient(to bottom, #111, #000);
-}
-
 /* Text */
 h1 {
-    font-size: 60px;
+    font-size: 65px;
 }
 
 p {
-    font-size: 20px;
-    color: #ccc;
+    font-size: 22px;
+    color: #ddd;
 }
 
 /* Button */
@@ -108,7 +116,7 @@ button:hover {
 }
 
 .card {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.08);
     padding: 20px;
     border-radius: 20px;
     width: 250px;
@@ -131,34 +139,39 @@ button:hover {
 
 <div id="main">
 
-<!-- 🚀 HERO -->
-<section class="section hero">
-    <h1>Hello, I'm Asmit</h1>
-    <p>Student • Coder • Building Evo AI 🤖</p>
-    <button onclick="alert('Evo AI Coming Soon 🚀')">Explore Evo</button>
+<!-- 🎬 HERO WITH VIDEO -->
+<section class="section">
+    <video autoplay muted loop class="video-bg">
+        <source src="bg.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <h1>Welcome to My World</h1>
+    <p>I Build AI • Code • Create the Future 🚀</p>
+    <button onclick="alert('Evo AI Launching Soon 🤖')">Explore Evo</button>
 </section>
 
 <!-- 💻 PROJECTS -->
-<section class="section projects">
+<section class="section">
     <h1>My Work</h1>
-    
+
     <div class="cards">
         <div class="card">
             <h3>Evo AI 🤖</h3>
-            <p>Voice assistant project</p>
+            <p>Voice Assistant Project</p>
         </div>
 
         <div class="card">
             <h3>More Coming 🚀</h3>
-            <p>New innovations loading...</p>
+            <p>Next-gen ideas in progress</p>
         </div>
     </div>
 </section>
 
 <!-- 🎯 FUTURE -->
-<section class="section hero">
-    <h1>Future Vision</h1>
-    <p>Building smart AI tools & real-world projects</p>
+<section class="section">
+    <h1>The Future</h1>
+    <p>Building intelligent systems for tomorrow</p>
 </section>
 
 </div>
