@@ -1,75 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Asmit | Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-            text-align: center;
-        }
-        .container {
-            padding: 50px;
-        }
-        h1 {
-            font-size: 50px;
-        }
-        p {
-            font-size: 20px;
-            color: #cbd5f5;
-        }
-        .btn {
-            padding: 12px 25px;
-            margin-top: 20px;
-            border: none;
-            background: cyan;
-            color: black;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        .projects {
-            margin-top: 50px;
-        }
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 12px;
-            display: inline-block;
-            width: 250px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Asmit | Coder</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #000;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🔥 Loader */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.loader-text {
+    font-size: 28px;
+    letter-spacing: 4px;
+    animation: fade 1.5s infinite alternate;
+}
+
+@keyframes fade {
+    from { opacity: 0.3 }
+    to { opacity: 1 }
+}
+
+/* Hide content */
+#main-content {
+    display: none;
+}
+
+/* 🔥 Scroll Animation Base */
+header, section {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+header.show, section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 120px 20px 60px;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+/* Button */
+button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: none;
+    background: white;
+    color: black;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ddd;
+}
+
+/* Sections */
+section {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* Cards */
+.projects {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #111;
+    padding: 25px;
+    border-radius: 20px;
+    width: 260px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: #1a1a1a;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Hello, I'm Asmit 👋</h1>
-    <p>Programmer | JEE Aspirant | AI Developer</p>
-    <button class="btn" onclick="showMsg()">Meet Evo AI</button>
+<!-- 🔥 Loader -->
+<div id="loader">
+    <div class="loader-text">ASMIT</div>
+</div>
 
+<!-- 🔥 Main Content -->
+<div id="main-content">
+
+<header>
+    <h1>Hello, I'm Asmit</h1>
+    <p class="subtitle">Student • Coder • Building Evo AI 🤖</p>
+    <button onclick="alert('Evo AI Coming Soon 🚀')">Explore Evo</button>
+</header>
+
+<section>
+    <h2>My Projects</h2>
     <div class="projects">
-        <h2>My Projects</h2>
-
         <div class="card">
-            <h3>Evo AI Assistant 🤖</h3>
-            <p>My personal voice assistant project.</p>
+            <h3>Evo AI 🤖</h3>
+            <p>My personal AI voice assistant.</p>
         </div>
 
         <div class="card">
-            <h3>More Coming Soon 🚀</h3>
-            <p>Working on new projects...</p>
+            <h3>More Coming 🚀</h3>
+            <p>New innovations in progress...</p>
         </div>
     </div>
+</section>
+
+<footer>
+    © 2026 Asmit
+</footer>
+
 </div>
 
 <script>
-function showMsg() {
-    alert("Welcome to Evo AI 🚀");
-}
+// 🔥 Loader
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+    }, 1500);
+});
+
+// 🔥 Scroll Animation
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+// Apply to all sections
+document.querySelectorAll("header, section").forEach((el) => {
+    observer.observe(el);
+});
 </script>
 
 </body>
