@@ -8,7 +8,6 @@
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-    background: #000;
     color: white;
     overflow-x: hidden;
 }
@@ -23,12 +22,11 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    flex-direction: column;
 }
 
 .loader-text {
-    font-size: 28px;
-    letter-spacing: 4px;
+    font-size: 30px;
+    letter-spacing: 5px;
     animation: fade 1.5s infinite alternate;
 }
 
@@ -37,49 +35,61 @@ body {
     to { opacity: 1 }
 }
 
-/* Hide content */
-#main-content {
+/* Hide main */
+#main {
     display: none;
 }
 
-/* 🔥 Scroll Animation Base */
-header, section {
+/* 🔥 Parallax Section */
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
     opacity: 0;
-    transform: translateY(60px);
-    transition: all 1s ease;
+    transform: translateY(50px);
+    transition: 1s;
 }
 
-header.show, section.show {
+.section.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Header */
-header {
-    text-align: center;
-    padding: 120px 20px 60px;
+/* Different backgrounds */
+.hero {
+    background: linear-gradient(to bottom, black, #111);
 }
 
+.projects {
+    background: linear-gradient(to bottom, #111, #000);
+}
+
+/* Text */
 h1 {
     font-size: 60px;
-    font-weight: 600;
 }
 
-.subtitle {
-    color: #aaa;
-    font-size: 22px;
-    margin-top: 10px;
+p {
+    font-size: 20px;
+    color: #ccc;
 }
 
 /* Button */
 button {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 12px 30px;
     border: none;
+    border-radius: 30px;
     background: white;
     color: black;
-    border-radius: 30px;
-    font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -88,38 +98,26 @@ button:hover {
     background: #ddd;
 }
 
-/* Sections */
-section {
-    text-align: center;
-    padding: 80px 20px;
-}
-
 /* Cards */
-.projects {
+.cards {
     display: flex;
-    justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .card {
-    background: #111;
-    padding: 25px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
     border-radius: 20px;
-    width: 260px;
+    width: 250px;
+    backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
 .card:hover {
     transform: scale(1.05);
-    background: #1a1a1a;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #777;
 }
 </style>
 </head>
@@ -131,46 +129,50 @@ footer {
     <div class="loader-text">ASMIT</div>
 </div>
 
-<!-- 🔥 Main Content -->
-<div id="main-content">
+<div id="main">
 
-<header>
+<!-- 🚀 HERO -->
+<section class="section hero">
     <h1>Hello, I'm Asmit</h1>
-    <p class="subtitle">Student • Coder • Building Evo AI 🤖</p>
+    <p>Student • Coder • Building Evo AI 🤖</p>
     <button onclick="alert('Evo AI Coming Soon 🚀')">Explore Evo</button>
-</header>
+</section>
 
-<section>
-    <h2>My Projects</h2>
-    <div class="projects">
+<!-- 💻 PROJECTS -->
+<section class="section projects">
+    <h1>My Work</h1>
+    
+    <div class="cards">
         <div class="card">
             <h3>Evo AI 🤖</h3>
-            <p>My personal AI voice assistant.</p>
+            <p>Voice assistant project</p>
         </div>
 
         <div class="card">
             <h3>More Coming 🚀</h3>
-            <p>New innovations in progress...</p>
+            <p>New innovations loading...</p>
         </div>
     </div>
 </section>
 
-<footer>
-    © 2026 Asmit
-</footer>
+<!-- 🎯 FUTURE -->
+<section class="section hero">
+    <h1>Future Vision</h1>
+    <p>Building smart AI tools & real-world projects</p>
+</section>
 
 </div>
 
 <script>
 // 🔥 Loader
-window.addEventListener("load", () => {
+window.onload = () => {
     setTimeout(() => {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
+        document.getElementById("main").style.display = "block";
     }, 1500);
-});
+};
 
-// 🔥 Scroll Animation
+// 🔥 Scroll animation
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -179,8 +181,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 });
 
-// Apply to all sections
-document.querySelectorAll("header, section").forEach((el) => {
+document.querySelectorAll(".section").forEach((el) => {
     observer.observe(el);
 });
 </script>
