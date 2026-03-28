@@ -160,7 +160,7 @@ button:hover {
 
     <h1>Welcome to My World</h1>
     <p>I Build AI • Code • Create the Future 🚀</p>
-    <button onclick="alert('Evo AI Launching Soon 🤖')">Explore Evo</button>
+    <button onclick="openEvo()">Explore Evo</button>
 </section>
 
 <!-- 💻 PROJECTS -->
@@ -216,7 +216,50 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll(".section").forEach((el) => {
     observer.observe(el);
 });
-</script>
 
+function openEvo(){
+    const modal = document.getElementById("evoModal");
+    const video = document.getElementById("evoVideo");
+
+    modal.style.display = "flex";
+    video.play();
+}
+
+function closeEvo(){
+    const modal = document.getElementById("evoModal");
+    const video = document.getElementById("evoVideo");
+
+    modal.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
+}
+  
+</script>
+<div id="evoModal" style="
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.9);
+display: none;
+justify-content: center;
+align-items: center;
+z-index: 10000;
+flex-direction: column;
+">
+
+    <video id="evoVideo" controls style="width: 80%; max-width: 800px;">
+        <source src="evo.mp4" type="video/mp4">
+    <button onclick="closeEvo()" style="
+position:absolute;
+top:20px;
+right:20px;
+font-size:20px;
+background:none;
+color:white;
+border:none;
+">✖</button>
+</div>
 </body>
 </html>
