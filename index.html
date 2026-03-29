@@ -69,6 +69,7 @@ body {
     text-align: center;
     flex-direction: column;
     position: relative;
+    background: linear-gradient(to bottom, #000, #111);
 
     opacity: 0;
     transform: translateY(50px);
@@ -79,7 +80,13 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+.dark {
+    background: #000;
+}
 
+.light {
+    background: #111;
+}
 /* Text */
 h1 {
     font-size: 65px;
@@ -164,7 +171,7 @@ button:hover {
 </section>
 
 <!-- 💻 PROJECTS -->
-<section class="section">
+<section class="section dark">
     <h1>My Work</h1>
 
     <div class="cards">
@@ -181,7 +188,7 @@ button:hover {
 </section>
 
 <!-- 🎯 FUTURE -->
-<section class="section">
+<section class="section light">
     <h1>The Future</h1>
     <p>Building intelligent systems for tomorrow</p>
 </section>
